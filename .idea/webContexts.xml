@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Organisateur/components/list-ofDetails.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/Organisateur/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Organisateur/components/listOfEventsDetails.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/Organisateur/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/template.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/components/User.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/admin/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/components/add-event.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/admin/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/components/list-events.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/admin/components" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/events/EventPlusInfo.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/events" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/events/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/events" />
+      </map>
+    </option>
+  </component>
+</project>

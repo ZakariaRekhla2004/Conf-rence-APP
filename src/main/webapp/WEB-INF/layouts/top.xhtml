@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsf/html">
+<body>
+<ui:composition>
+    <nav class="navbar navbar-expand-lg  " style="background-color: #0b173d;" >
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.xhtml">
+                <span class="" style="color: white"><img  src="https://ecampus-ests.uca.ma/pluginfile.php/1/theme_moove/logo/1704300287/imageonline-co-transparentimage.png" width="120" height="42" alt=""/></span> <span class="font-bold" style="color: white">Events</span>App
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link" value="Home" style="color: white" outcome="/index" rendered="#{!userContoller.isAdmin()}" />
+                    </li>
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link" value="Login" style="color: white" outcome="/auth/login" rendered="#{userContoller.loggedUser == null}" />
+                    </li>
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link" value="Register" style="color: white" outcome="/auth/register" rendered="#{userContoller.loggedUser == null}" />
+                    </li>
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link" value="Event" style="color: white" outcome="/admin/index" rendered="#{userContoller.isAdmin()}" />
+                    </li>
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link" value="User" style="color: white" outcome="/admin/components/User.xhtml" rendered="#{userContoller.isAdmin()}" />
+                    </li>
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link" value="EventDetails" style="color: white" outcome="/Organisateur/index" rendered="#{userContoller.isOganisater()}" />
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <h:column rendered="#{userContoller.loggedUser != null}">
+                        <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://lh3.googleusercontent.com/a/ACg8ocIBxYNmpR2DvfMy_Zu_iS67DHecr_vIslj8maduWWAUdwGkPQeh=s396-c-no" alt="" width="32" height="32" class="rounded-circle me-2" />
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li>
+                                    <h:form>
+                                        <h:commandButton value="Logout" action="#{userContoller.logout()}" styleClass="dropdown-item" />
+                                    </h:form>
+                                </li>
+                            </ul>
+                        </div>
+                    </h:column>
+                </div>
+            </div>
+        </div>
+    </nav>
+</ui:composition>
+</body>
+</html>

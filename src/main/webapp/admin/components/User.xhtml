@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/layouts/template.xhtml">
+    <ui:define name="content">
+        <div style="display: flex; justify-content: center; align-items: center;">
+
+            <div class=" p-4" style="max-height: calc(100vh - 48px); width: calc(100% - 280px)">
+                <h1 class="text-2xl mb-0 font-bold"><span class="text-muted">Welocome,</span> #{userContoller.loggedUser.name}</h1>
+                <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, debitis. Sapiente dolorem modi minus ea.
+                </p>
+                <h:outputScript>
+                    function filterTable4() {
+                        var input, filter, table, tr, td, i, txtValue;
+                        input = document.getElementById("searchInput");
+                        filter = input.value.toUpperCase();
+                        table = document.getElementById("eventTable");
+                        tr = table.getElementsByTagName("tr");
+                        for (i = 0; i&lt;tr.length; i++) {
+                            td = tr[i].getElementsByTagName("td")[0]; // Change the index to match the column you want to search
+                            if (td) {
+                                txtValue = td.textContent || td.innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                    tr[i].style.display = "";
+                                } else {
+                                    tr[i].style.display = "none";
+                                }
+                            }
+                        }
+                    }
+
+                </h:outputScript>
+
+                <input type="text" id="searchInput" onkeyup="filterTable4()" style="width:150px" placeholder="Search"/>
+                <h:dataTable id="eventTable" styleClass="table table-striped" var="user" value="#{userContoller.users}">
+                    <h:column>
+                        <f:facet name="header">Name</f:facet>
+                        <h:outputText value="#{user.name}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                        <h:outputText value="#{user.email}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Role</f:facet>
+                        <h:outputText value="#{user.role}">
+
+                        </h:outputText>
+                    </h:column>
+
+                </h:dataTable>
+
+
+
+
+            </div>
+        </div>
+
+
+
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<body>
+   <ui:component>
+      <div>
+         <h:outputScript>
+            function filterTable3() {
+               var input, filter, table, tr, td, i, txtValue;
+               input = document.getElementById("searchInput");
+               filter = input.value.toUpperCase();
+               table = document.getElementById("eventTable");
+               tr = table.getElementsByTagName("tr");
+               for (i = 0; i&lt;tr.length; i++) {
+                  td = tr[i].getElementsByTagName("td")[0]; // Change the index to match the column you want to search
+                  if (td) {
+                     txtValue = td.textContent || td.innerText;
+                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                     } else {
+                        tr[i].style.display = "none";
+                     }
+                  }
+               }
+            }
+
+         </h:outputScript>
+         <input type="text" id="searchInput" onkeyup="filterTable3()" style="width:150px" placeholder="Search"/>
+      <h:dataTable id="eventTable"  styleClass="table table-striped" var="event" value="#{eventContoller.getEvents()}">
+         <h:column>
+            <f:facet name="header">Title</f:facet>
+            <h:outputText value="#{event.title}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Description</f:facet>
+            <h:outputText value="#{event.description}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Date start</f:facet>
+            <h:outputText value="#{event.startDate}">
+               <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+         </h:column>
+         <h:column>
+            <f:facet name="header">Date end</f:facet>
+            <h:outputText value="#{event.endDate}" >
+               <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+         </h:column>
+         <h:column>
+            <f:facet name="header">Event type</f:facet>
+            <h:outputText value="#{event.getType()}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Heurs</f:facet>
+            <h:outputText value="#{event.heurs}" />
+         </h:column>
+
+         <h:column>
+            <f:facet name="header">Actions</f:facet>
+            <div class="d-flex gap-1 align-items-center justify-content-center">
+               <h:form styleClass="p-0 m-0">
+              <h:inputHidden id="eventId" value="#{eventContoller.session.setAttribute('id_event',event.id)}" />
+               </h:form>
+               <button class="btn btn-primary">
+                  <a href="./components/list-ofDetails.xhtml?idevent=#{event.getId()}" class="btn btn-primary" id="#{event.getId()}">View</a>
+               </button>
+
+            </div>
+         </h:column>
+      </h:dataTable>
+      </div>
+   </ui:component>
+</body>
+</html>

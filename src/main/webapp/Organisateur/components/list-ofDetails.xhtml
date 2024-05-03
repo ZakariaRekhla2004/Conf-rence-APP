@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+
+>
+
+<h:head>
+   <title>Event Information</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"/>
+   <style type="text/css">
+      .event-container {
+         margin-top: 48px;
+         padding: 20px;
+      }
+      .event-info {
+         margin-bottom: 30px;
+      }
+      .event-details {
+         margin-top: 30px;
+         display: flex;
+         flex-wrap: wrap;
+      }
+      .event-card {
+         width: 420px;
+         margin-right: 20px;
+         margin-bottom: 20px;
+         padding: 20px;
+         border: 1px solid #ccc;
+         border-radius: 10px;
+         background-color: #fff;
+      }
+      .event-card h2 {
+         font-size: 20px;
+         font-weight: bold;
+         margin-bottom: 10px;
+      }
+      .event-card p {
+         font-size: 14px;
+         margin-top: 0;
+      }
+   </style>
+</h:head>
+<h:body>
+   <ui:composition template="/WEB-INF/layouts/template.xhtml">
+      <ui:define name="content">
+
+         <div style="margin-top: 48px; padding: 20px;">
+            <div style=" margin-bottom: 30px">
+               <h2>Event Information General</h2>
+               <div class="row">
+                  <div class="col-md-6">
+                     <h:outputLabel value="Title:"/>
+                  </div>
+                  <div class="col-md-6">
+                     <h:outputText value="#{eventContoller.eventById.title}" />
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <h:outputLabel value="Description:"/>
+                  </div>
+                  <div class="col-md-6">
+                     <h:outputText value="#{eventContoller.eventById.description}" />
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <h:outputLabel value="Type:"/>
+                  </div>
+                  <div class="col-md-6">
+                     <h:outputText value="#{eventContoller.eventById.type}" />
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <h:outputLabel value="Start Date:"/>
+                  </div>
+                  <div class="col-md-6">
+                     <h:outputText value="#{eventContoller.eventById.startDate}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                     </h:outputText>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <h:outputLabel value="End Date:"/>
+                  </div>
+                  <div class="col-md-6">
+                     <h:outputText value="#{eventContoller.eventById.endDate}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                     </h:outputText>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+               Add Session
+            </button>
+            <div class="modal fade" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                  <div class="modal-content bg-white">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Event Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+<!--                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium nisi nunc.-->
+
+                        <h:form>
+                           <div class="mb-3">
+                              <h:outputLabel for="title" value="Sujet"/>
+                              <h:inputText  id="title" styleClass="form-control" value="#{sessionControler.session.sujetAbord}" required="true"
+                                            requiredMessage="Title is required" />
+                              <h:message for="title" showDetail="true" styleClass="error" />
+                           </div>
+
+                           <div class="mb-3">
+                              <h:outputLabel for="description" value="Intervenant"/>
+                              <h:inputTextarea id="description"  styleClass="form-control" value="#{sessionControler.session.interName}" />
+                           </div>
+
+                           <div class="mb-3">
+                              <h:outputLabel for="date" value="Heure debut"/>
+                              <h:inputText id="date" styleClass="form-control" value="#{sessionControler.session.heureDebut}" required="true"
+                                           requiredMessage="Event Date is required">
+                              </h:inputText>
+                              <h:message for="date" showDetail="true" styleClass="error" />
+                           </div>
+                           <div class="mb-3">
+                              <h:outputLabel for="datef" value="Heure fin"/>
+                              <h:inputText id="datef" styleClass="form-control" value="#{sessionControler.session.fin}" required="true"
+                                           requiredMessage="Event Date is required">
+                              </h:inputText>
+                              <h:message for="date" showDetail="true" styleClass="error" />
+                           </div>
+                           <div class="mb-3">
+                              <h:outputLabel for="hours" value="Instagram Account"/>
+                              <h:inputText  id="hours" styleClass="form-control"  value="#{sessionControler.session.instaAcc}" required="true"
+                                            requiredMessage="Event Hours are required">
+                              </h:inputText>
+                              <h:message for="hours" showDetail="true" styleClass="error" />
+                           </div>
+                           <div class="mb-3">
+                              <h:outputLabel for="ddd" value="Linkden Account"/>
+                              <h:inputText  id="ddd" styleClass="form-control"  value="#{sessionControler.session.linkdAcc}" required="true"
+                                            requiredMessage="Event Hours are required">
+                              </h:inputText>
+                              <h:message for="hours" showDetail="true" styleClass="error" />
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-subtle" data-bs-dismiss="modal">Secondary Action</button>
+                              <h:commandButton action="#{sessionControler.AddSessions()}" styleClass="btn btn-primary" value="Add Session" />
+                           </div>
+                        </h:form>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+
+         <div style=" margin-top: 30px;  display: flex; flex-wrap: wrap;">
+            <h:outputScript>
+               function filterTable1() {
+                  var input, filter, table, tr, td, i, txtValue;
+                  input = document.getElementById("searchInput");
+                  filter = input.value.toUpperCase();
+                  table = document.getElementById("eventTable");
+                  tr = table.getElementsByTagName("tr");
+                  for (i = 0; i&lt;tr.length; i++) {
+                     td = tr[i].getElementsByTagName("td")[0]; // Change the index to match the column you want to search
+                     if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                           tr[i].style.display = "";
+                        } else {
+                           tr[i].style.display = "none";
+                        }
+                     }
+                  }
+               }
+
+            </h:outputScript>
+            <input type="text" id="searchInput" onkeyup="filterTable1()" style="width:150px" placeholder="Search"/>
+
+            <h:dataTable id="eventTable" styleClass="table table-striped" var="session1" value="#{sessionControler.sessions}">
+               <h:column>
+                  <f:facet name="header">Sujet :</f:facet>
+                  <h:outputText value="#{session1.sujetAbord}" />
+               </h:column>
+               <h:column>
+                  <f:facet name="header">Start Time</f:facet>
+                  <h:outputText value="#{session1.heureDebut}" />
+               </h:column>
+               <h:column>
+                  <f:facet name="header">End Time</f:facet>
+                  <h:outputText value="#{session1.fin}" />
+               </h:column>
+               <h:column>
+                  <f:facet name="header">Intervenant  Name</f:facet>
+                  <h:outputText value="#{session1.interName}" />
+               </h:column>
+               <h:column>
+                  <f:facet name="header">Instagram Account</f:facet>
+                  <h:outputText value="#{session1.instaAcc}" />
+               </h:column>
+               <h:column>
+                  <f:facet name="header">LinkedIn Account</f:facet>
+                  <h:outputText value="#{session1.linkdAcc}" />
+               </h:column>
+
+               <h:column>
+                  <f:facet name="header">Actions</f:facet>
+                  <div class="d-flex gap-1 align-items-center justify-content-center" id="#{session1.getId()}">
+                     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal">
+                        Edit
+                     </button>
+                     <div class="modal fade" tabindex="-1" id="modal" aria-labelledby="examplModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content bg-white">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="examplModalLabel">Edit Event</h5>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> Close</button>
+                              </div>
+                              <div class="modal-body">
+
+                                 <h:form>
+                                    <div class="mb-3">
+                                       <h:outputLabel  value="Id :"/>
+                                       <h:outputText value="#{session1.getId()}" />
+                                    </div>
+                                    <div class="mb-3">
+                                       <h:outputLabel for="title4" value="Sujet"/>
+                                       <h:inputText  id="title4" styleClass="form-control" value="#{sessionControler.session.sujetAbord}" required="true"
+                                                     requiredMessage="Title is required" />
+                                       <h:message for="title4" showDetail="true" styleClass="error" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                       <h:outputLabel for="description4" value="Intervenant"/>
+                                       <h:inputTextarea id="description4"  styleClass="form-control" value="#{sessionControler.session.interName}" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                       <h:outputLabel for="date4" value="Heure debut"/>
+                                       <h:inputText id="date4" styleClass="form-control" value="#{sessionControler.session.heureDebut}" required="true"
+                                                    requiredMessage="Event Date is required">
+                                       </h:inputText>
+                                       <h:message for="date4" showDetail="true" styleClass="error" />
+                                    </div>
+                                    <div class="mb-3">
+                                       <h:outputLabel for="datef4" value="Heure fin"/>
+                                       <h:inputText id="datef4" styleClass="form-control" value="#{sessionControler.session.fin}" required="true"
+                                                    requiredMessage="Event Date is required">
+                                       </h:inputText>
+                                       <h:message for="datef4" showDetail="true" styleClass="error" />
+                                    </div>
+                                    <div class="mb-3">
+                                       <h:outputLabel for="hours1" value="Instagram Account"/>
+                                       <h:inputText  id="hours1" styleClass="form-control"  value="#{sessionControler.session.instaAcc}" required="true"
+                                                     requiredMessage="Event Hours are required">
+                                       </h:inputText>
+                                       <h:message for="hours1" showDetail="true" styleClass="error" />
+                                    </div>
+                                    <div class="mb-3">
+                                       <h:outputLabel for="ddd1" value="Linkden Account"/>
+                                       <h:inputText  id="ddd1" styleClass="form-control"  value="#{sessionControler.session.linkdAcc}" required="true"
+                                                     requiredMessage="Event Hours are required">
+                                       </h:inputText>
+                                       <h:message for="ddd1" showDetail="true" styleClass="error" />
+                                    </div>
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-outline" data-bs-dismiss="modal">Cancel</button>
+                                       <h:commandButton action="#{sessionControler.UpdateSession(sessionControler.session,session1.getId())}" styleClass="btn btn-primary px-5" value="Edit Session">
+                                       </h:commandButton>
+                                    </div>
+                                 </h:form>
+                              </div>
+
+                           </div>
+                        </div>
+                     </div>
+                     <h:form styleClass="p-0 m-0">
+                        <h:commandButton styleClass="btn" value="Delete" action="#{sessionControler.deleteSession(session1.getId())}">
+                        </h:commandButton>
+                     </h:form>
+                  </div>
+               </h:column>
+            </h:dataTable>
+         </div>
+         </div>
+      </ui:define>
+   </ui:composition>
+</h:body>
+
+</html>

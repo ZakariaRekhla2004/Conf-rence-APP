@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Event Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        .eventmore-info {
+            margin-top: 20px;
+        }
+        .eventmore-info p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .eventmore-info label {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</h:head>
+<h:body>
+    <ui:composition template="/WEB-INF/layouts/template.xhtml">
+    <ui:define name="content">
+
+
+    <div class="container">
+        <h1>Event Details</h1>
+        <div class="eventmore-info">
+            <p><label>Title:</label> <h:outputText value="#{eventContoller.eventmore.title}" /></p>
+            <p><label>Description:</label> <h:outputText value="#{eventContoller.eventmore.description}" /></p>
+            <p><label>Start Date:</label> <h:outputText value="#{eventContoller.eventmore.startDate}" pattern="dd/MM/yyyy" /></p>
+            <p><label>End Date:</label> <h:outputText value="#{eventContoller.eventmore.endDate}" pattern="dd/MM/yyyy" /></p>
+            <p><label>Hours:</label> <h:outputText value="#{eventContoller.eventmore.heurs}" /></p>
+            <p><label>Type:</label> <h:outputText value="#{eventContoller.eventmore.type}" /></p>
+        </div>
+    </div>
+    <div style=" margin-top: 30px;  display: flex; flex-wrap: wrap;">
+        <h:dataTable styleClass="table table-striped" var="session1" value="#{sessionControler.sessions}">
+            <h:column>
+                <f:facet name="header">Sujet :</f:facet>
+                <h:outputText value="#{session1.sujetAbord}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Start Time</f:facet>
+                <h:outputText value="#{session1.heureDebut}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">End Time</f:facet>
+                <h:outputText value="#{session1.fin}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Intervenant  Name</f:facet>
+                <h:outputText value="#{session1.interName}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Instagram Account</f:facet>
+                <h:outputText value="#{session1.instaAcc}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">LinkedIn Account</f:facet>
+                <h:outputText value="#{session1.linkdAcc}" />
+            </h:column>
+        </h:dataTable>
+    </div>
+    </ui:define>
+    </ui:composition>
+</h:body>
+</html>
